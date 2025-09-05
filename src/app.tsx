@@ -20,7 +20,7 @@ import { Input } from "@/components/ui/input";
 
 // ---------- EDIT THESE SECTIONS ----------
 const PROFILE = {
-  name: "Your Name",
+  name: "Mahima Jagadeesh Patel",
   tagline: "Machine Learning Engineer • Builder • Problem Solver",
   location: "Pittsburgh, PA",
   email: "you@example.com",
