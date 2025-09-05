@@ -11,7 +11,8 @@ import {
   Calendar,
   GraduationCap,
   Code2,
-  Sparkles,
+  Sparkles, 
+  Award 
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -20,22 +21,20 @@ import { Input } from "@/components/ui/input";
 
 // ---------- EDIT THESE SECTIONS ----------
 const PROFILE = {
-  name: "Mahima Jagadeesh Patel",
-  tagline: "Machine Learning Engineer • Builder • Problem Solver",
+  name: "",
+  tagline: "Mahima Jagadeesh Patel",
   location: "Pittsburgh, PA",
-  email: "you@example.com",
-  resumeUrl: "https://example.com/your_resume.pdf", // <— replace with your resume link
-  avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=240&h=240&fit=crop&auto=format",
+  email: "mjagadee@andrew.cmu.edu",
+  resumeUrl: "https://drive.google.com/file/d/17OOUl54cnmqA367rViIC6vE6ozC1VKbK/view?usp=sharing", // <— replace with your resume link
+  avatar: "/ProfilePhoto.png",
   socials: {
-    github: "https://github.com/yourhandle",
-    linkedin: "https://www.linkedin.com/in/yourhandle/",
+    github: "https://github.com/mahima-jpatel",
+    linkedin: "https://www.linkedin.com/in/mahima-jagadeesh-patel-8641441a3/",
   },
 };
 
 const HIGHLIGHTS = [
-  "Built 100× faster analytics pipeline with ClickHouse",
-  "Shipped interactive podcast app prototype in 3 weeks",
-  "Published benchmark paper submission (ORBIT)"
+  "M.S. in Computational Data Science, Carnegie Mellon University (2024–2025)",
 ];
 
 const SKILLS = [
@@ -149,10 +148,16 @@ export default function Portfolio() {
             <NavLink href="#projects">Projects</NavLink>
             <NavLink href="#skills">Skills</NavLink>
             <NavLink href="#contact">Contact</NavLink>
-            <Button asChild size="sm" className="rounded-xl">
-              <a href={PROFILE.resumeUrl} target="_blank" rel="noreferrer">
-                <FileDown className="mr-2 h-4 w-4" /> Resume
-              </a>
+            <Button asChild className="rounded-xl">
+                  <a
+                    href={PROFILE.resumeUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-2"   // ← add this
+                  >
+                    <FileDown className="h-4 w-4 shrink-0 -translate-y-[1px]" />
+                    <span>Resume</span>
+                  </a>
             </Button>
           </nav>
         </div>
@@ -167,9 +172,10 @@ export default function Portfolio() {
             transition={{ duration: 0.6 }}
             src={PROFILE.avatar}
             alt="avatar"
-            className="w-28 h-28 sm:w-36 sm:h-36 rounded-2xl object-cover shadow"
+            className="w-100 h-100 sm:w-120 sm:h-120 md:w-96 md:h-96 rounded-2xl object-cover shadow-lg"
           />
           <div>
+      
             <motion.h1
               initial={{ y: 10, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
@@ -179,7 +185,7 @@ export default function Portfolio() {
               {PROFILE.tagline}
             </motion.h1>
             <p className="mt-4 text-gray-600 max-w-2xl">
-              I build reliable ML systems end‑to‑end—data, models, and product. I enjoy shipping polished experiences that make complex tech feel effortless.
+              I build reliable ML systems end‑to‑end, data, models, and product. I enjoy shipping polished experiences that make complex tech feel effortless.
             </p>
             <div className="flex flex-wrap items-center gap-3 mt-6">
               <Badge variant="secondary" className="px-3 py-1">
@@ -191,15 +197,24 @@ export default function Portfolio() {
             </div>
             <div className="mt-6 flex items-center gap-3">
               <Button asChild className="rounded-xl">
-                <a href="#projects">
-                  See Projects <ArrowRight className="ml-2 h-4 w-4" />
+                <a
+                  href="#projects"
+                  className="inline-flex items-center gap-2 whitespace-nowrap"
+                >
+                  <span>See Projects</span>
+                  <ArrowRight className="h-4 w-4 shrink-0 -translate-y-[1px]" />
                 </a>
               </Button>
               <Button asChild variant="outline" className="rounded-xl">
-                <a href={`mailto:${PROFILE.email}`}>
-                  <Mail className="mr-2 h-4 w-4" /> Contact
+                <a
+                  href={`mailto:${PROFILE.email}`}
+                  className="inline-flex items-center gap-2 whitespace-nowrap"
+                >
+                  <Mail className="h-4 w-4 shrink-0 -translate-y-[1px]" />
+                  <span>Contact</span>
                 </a>
               </Button>
+
               <a href={PROFILE.socials.github} target="_blank" rel="noreferrer" aria-label="GitHub" className="p-2 rounded-lg border hover:bg-gray-50">
                 <Github className="w-5 h-5" />
               </a>
@@ -212,15 +227,55 @@ export default function Portfolio() {
       </header>
 
       {/* About */}
-      <Section id="about" title="About">
+      <Section id="about" title="About Me">
         <Card className="rounded-2xl">
-          <CardContent className="p-6">
-            <p className="leading-7 text-gray-700">
-              I’m a graduate student at CMU’s LTI with a focus on multimodal ML and large‑scale data systems. I’ve shipped production models, improved infra performance, and love turning research ideas into products people actually use.
+          <CardHeader className="pb-2">
+          </CardHeader>
+          <CardContent className="pt-0 text-gray-700 space-y-4">
+            <p>
+              Hi, I’m Mahima Jagadeesh Patel, a graduate student at Carnegie Mellon University’s{" "}
+              <a
+                href="https://lti.cs.cmu.edu"
+                target="_blank"
+                rel="noreferrer"
+                className="underline hover:no-underline"
+              >
+                Language Technologies Institute
+              </a>
+              , specializing in multimodal machine learning, recommender systems, and large-scale data systems.
+              My passion lies in bridging the gap between cutting-edge research and real-world applications.
+            </p>
+
+            <p>
+              Technically, I’ve shipped production-ready ML models and built end-to-end pipelines that handle scale
+              and reliability. At <a
+                href="https://pixis.ai/"
+                target="_blank"
+                rel="noreferrer"
+                className="underline hover:no-underline"
+              >
+                Pixis
+              </a>, I deployed bandit-based optimization models and clustering algorithms that
+              powered thousands of daily recommendations, improving CAC by 33% and CVR by 30%. At Seagate Research,
+              I built hierarchical Transformer models for ferroelectric loop classification and re-architected data
+              pipelines with ClickHouse, achieving a 100× speedup in analytics performance. I’ve also contributed to
+              academic projects like ORBIT (a NeurIPS submission) and led discussions as a Teaching Assistant at CMU.
+            </p>
+
+            <p>
+              Beyond work, I’ve grown by embracing challenges, from trekking the Himalayas to diving deep seas in Indonesia. I’m also a long-distance runner and Strava enthusiast,
+              always chasing new milestones on and off the track.
+            </p>
+
+            <p>
+              I’m excited about building systems that make AI transparent, impactful, and accessible through research,
+              engineering, and product development.
             </p>
           </CardContent>
         </Card>
       </Section>
+
+
 
       {/* Experience */}
       <Section id="experience" title="Experience">
@@ -298,7 +353,7 @@ export default function Portfolio() {
       {/* Skills */}
       <Section id="skills" title="Skills">
         <Card className="rounded-2xl">
-          <CardContent className="p-6">
+          <CardContent className="px-6 pt-4 pb-6">
             <div className="flex flex-wrap gap-2">
               {SKILLS.map((s) => (
                 <Badge key={s} className="px-3 py-1">{s}</Badge>
@@ -308,15 +363,57 @@ export default function Portfolio() {
         </Card>
       </Section>
 
-      {/* Education (optional) */}
+
+
+      {/* Education */}
       <Section id="education" title="Education">
+        {/* CMU */}
         <Card className="rounded-2xl">
-          <CardContent className="p-6">
-            <div className="flex items-center gap-3 text-gray-700">
+          <CardHeader className="pb-2">
+            <CardTitle className="flex items-center gap-3 text-lg sm:text-xl font-semibold">
               <GraduationCap className="w-5 h-5" />
-              <div>
-                <div className="font-medium">Carnegie Mellon University</div>
-                <div className="text-sm text-gray-600">M.S. in Computational Data Science · 2024–2026</div>
+              Carnegie Mellon University
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="pt-0">
+            <div className="flex flex-wrap items-center gap-4 text-sm text-gray-600">
+              <span>M.S. in Computational Data Science</span>
+              <span>·</span>
+              <span>2024–2026</span>
+              <span>·</span>
+              <span>GPA: {/* replace with your real value */}4.08/4.00</span>
+              {/* optional location to mirror experience */}
+              {/* <span className="flex items-center gap-1"><MapPin className="w-4 h-4" /> Pittsburgh, PA</span> */}
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* DSCE (UG) */}
+        <Card className="rounded-2xl">
+          <CardHeader className="pb-2">
+            <CardTitle className="flex items-center gap-3 text-lg sm:text-xl font-semibold">
+              <GraduationCap className="w-5 h-5" />
+              Dayananda Sagar College of Engineering
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="pt-0">
+            <div className="flex flex-wrap items-center gap-4 text-sm text-gray-600">
+              <span>B.E. in Computer Science and Engineering</span>
+              <span>·</span>
+              <span>2018–2022</span>
+              <span>·</span>
+              <span>GPA: {/* replace with your real value */}9.76/10.00</span>
+            </div>
+
+            {/* Award */}
+            <div className="mt-3 flex items-start gap-2 text-sm">
+              <Award className="w-4 h-4 mt-0.5 text-yellow-600" />
+              <div className="text-gray-700">
+                <span className="font-medium">Dr. D Hemachandra Sagar Distinction Award</span>
+                <span className="block text-gray-600">
+                  Recipient for securing the third-highest GPA among graduating B.E. students (Jan 2023), 
+                  associated with Dayananda Sagar College of Engineering, Bangalore.
+                </span>
               </div>
             </div>
           </CardContent>
@@ -326,27 +423,49 @@ export default function Portfolio() {
       {/* Contact */}
       <Section id="contact" title="Contact">
         <Card className="rounded-2xl">
-          <CardContent className="p-6">
+          {/* match About's internal rhythm */}
+          <CardHeader className="pb-2"></CardHeader>
+          <CardContent className="pt-0">
             <div className="flex flex-col sm:flex-row sm:items-center gap-4">
               <div className="text-gray-700">
-                I’m open to internships and collaborations. Reach me at
-                {" "}
+                I’m open to collaborations. Reach me at{" "}
                 <a className="underline" href={`mailto:${PROFILE.email}`}>{PROFILE.email}</a>.
               </div>
+
               <div className="flex gap-3">
                 <Button asChild variant="outline" className="rounded-xl">
-                  <a href={PROFILE.socials.github} target="_blank" rel="noreferrer">
-                    <Github className="mr-2 h-4 w-4" /> GitHub
+                  <a
+                    href={PROFILE.socials.github}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-2 whitespace-nowrap"
+                  >
+                    <Github className="h-4 w-4 shrink-0 -translate-y-[1px]" />
+                    <span>GitHub</span>
                   </a>
                 </Button>
+
                 <Button asChild variant="outline" className="rounded-xl">
-                  <a href={PROFILE.socials.linkedin} target="_blank" rel="noreferrer">
-                    <Linkedin className="mr-2 h-4 w-4" /> LinkedIn
+                  <a
+                    href={PROFILE.socials.linkedin}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-2 whitespace-nowrap"
+                  >
+                    <Linkedin className="h-4 w-4 shrink-0 -translate-y-[1px]" />
+                    <span>LinkedIn</span>
                   </a>
                 </Button>
+
                 <Button asChild className="rounded-xl">
-                  <a href={PROFILE.resumeUrl} target="_blank" rel="noreferrer">
-                    <FileDown className="mr-2 h-4 w-4" /> Resume
+                  <a
+                    href={PROFILE.resumeUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-2 whitespace-nowrap"
+                  >
+                    <FileDown className="h-4 w-4 shrink-0 -translate-y-[1px]" />
+                    <span>Resume</span>
                   </a>
                 </Button>
               </div>
@@ -354,6 +473,7 @@ export default function Portfolio() {
           </CardContent>
         </Card>
       </Section>
+
 
       {/* Footer */}
       <footer className="py-10 text-center text-sm text-gray-500">
