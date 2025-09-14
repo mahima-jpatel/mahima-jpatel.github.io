@@ -5,14 +5,12 @@ import {
   Linkedin,
   Mail,
   FileDown,
-  ArrowRight,
-  ExternalLink,
   MapPin,
   Calendar,
   GraduationCap,
   Code2,
-  Sparkles, 
-  Award 
+  Sparkles,
+  Award
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -25,7 +23,7 @@ const PROFILE = {
   tagline: "Mahima Jagadeesh Patel",
   location: "Pittsburgh, PA",
   email: "mjagadee@andrew.cmu.edu",
-  resumeUrl: "https://drive.google.com/file/d/17OOUl54cnmqA367rViIC6vE6ozC1VKbK/view?usp=sharing", // <— replace with your resume link
+  resumeUrl: "https://drive.google.com/file/d/17OOUl54cnmqA367rViIC6vE6ozC1VKbK/view?usp=sharing",
   avatar: "/ProfilePhoto.png",
   socials: {
     github: "https://github.com/mahima-jpatel",
@@ -45,15 +43,14 @@ const SKILLS = [
 
 const EXPERIENCE = [
   {
-    role: "Data Scientist Intern",
-    company: "Seagate Research",
-    location: "Shakopee, MN",
+    role: "Data Science Intern, Seagate Research Group",
+    company: "Seagate Technology",
+    location: "Minneapolis, MN",
     start: "May 2025",
     end: "Aug 2025",
     points: [
-      "Designed OLAP pipeline (PostgreSQL → ClickHouse) with 100× query speedup.",
-      "Trained hierarchical Transformer for ferroelectric sequence classification.",
-      "Built dashboards to visualize wafer analytics across product lines.",
+      "Architected a legacy PostgreSQL pipeline by integrating ClickHouse, achieving 100x faster aggregations, 67% less storage on large-scale test data and enabling near real-time analytics for memory characterization.",
+      "Built a hierarchical transformer model for ferroelectric defect detection, achieving 97% accuracy on synthetically modeled data and accelerating analysis for ongoing research efforts.",
     ],
   },
   {
@@ -68,53 +65,60 @@ const EXPERIENCE = [
     ],
   },
   {
-    role: "Associate Data Scientist",
+    role: "Data Scientist",
     company: "Pixis",
     location: "Bangalore, IN",
     start: "2022",
-    end: "2023",
+    end: "2024",
     points: [
-      "Deployed bandit-based budget optimizer generating 5k+ recs/day.",
-      "Partnered with product to ship models impacting revenue at scale.",
+      "Engineered a clustering and recommendation system that segmented Google Display products to personalize ad targeting, boosting advertising efficiency and driving adoption across 30+ brands.",
+      "Led the development and deployment of Bid and Budget models with Kubeflow, transitioning 200+ pipelines in a short period and earning the “Performer of the Month” award.",
+      "Developed a budget optimization AI Recommendation model, improving Customer Acquisition Cost (CAC) by 33% and Conversion Rate (CVR) by 30% while optimizing ROAS, leading to Substantial revenue growth for Pixis.",
     ],
   },
-];
-
-const PROJECTS = [
   {
-    title: "Decibl – AI Podcast Platform",
-    desc: "Transforms written content into interactive, on-demand podcasts with question-aware flows.",
-    tags: ["Next.js", "LangGraph", "OpenAI", "Postgres"],
-    links: {
-      demo: "https://example.com/decibl-demo",
-      repo: "https://github.com/yourhandle/decibl",
-    },
+    role: "Product Analyst Intern",
+    company: "Pixis",
+    location: "Bangalore, IN",
+    start: "2021",
+    end: "2022",
+    points: [
+      "Spearheaded AI-powered solutions crucial for clients, boosting product performance and operational efficiency, and contributing to 70% of the company’s total revenue.",
+      "Deciphered and transformed business needs into intuitive, user-centric products, which encompassed close collaboration with stakeholders, in-depth user research, and comprehensive data analysis.",
+    ],
   },
   {
-    title: "ORBIT Benchmark",
-    desc: "Open recommendation benchmark with evaluation pipelines and leaderboard UI.",
-    tags: ["Python", "RecBole", "HF Spaces"],
-    links: {
-      demo: "https://example.com/orbit",
-      repo: "https://github.com/yourhandle/orbit",
-    },
-  },
-  {
-    title: "Ferroelectric Classifier",
-    desc: "Hierarchical Transformer that detects wake-up → ideal → fatigue phases from loop data.",
-    tags: ["PyTorch", "Transformers", "Matplotlib"],
-    links: {
-      demo: "https://example.com/ferro-demo",
-      repo: "https://github.com/yourhandle/ferro-classifier",
-    },
+    role: "AI Developer Intern",
+    company: "Pixis",
+    location: "Bangalore, IN",
+    start: "2021",
+    end: "2022",
+    points: [
+      "Built AI models with Computer Vision and Image Processing for a blockchain-based food supply chain, achieving 87% test accuracy and delivering real-time automation and insights, enhancing efficiency and reducing costs.",
+    ],
   },
 ];
 // ----------------------------------------
 
-const Section = ({ id, title, children }: { id: string; title: string; children: React.ReactNode }) => (
-  <section id={id} className="scroll-mt-24 py-16 sm:py-24">
+// Small helper to merge class names without bringing in an external util
+function cx(...classes: Array<string | undefined>) {
+  return classes.filter(Boolean).join(" ");
+}
+
+const Section = ({
+  id,
+  title,
+  children,
+  className,
+}: {
+  id: string;
+  title: string;
+  children: React.ReactNode;
+  className?: string;
+}) => (
+  <section id={id} className={cx("scroll-mt-24 py-10 sm:py-14", className)}>
     <div className="max-w-6xl mx-auto px-4">
-      <div className="flex items-center gap-3 mb-10">
+      <div className="flex items-center gap-3 mb-6">
         <Sparkles className="w-5 h-5" />
         <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight">{title}</h2>
       </div>
@@ -132,9 +136,9 @@ const NavLink = ({ href, children }: any) => (
 export default function Portfolio() {
   const [query, setQuery] = useState("");
 
-  const filteredProjects = PROJECTS.filter(p =>
-    [p.title, p.desc, ...(p.tags || [])].join(" ").toLowerCase().includes(query.toLowerCase())
-  );
+  // const filteredProjects = PROJECTS.filter(p =>
+  //   [p.title, p.desc, ...(p.tags || [])].join(" ").toLowerCase().includes(query.toLowerCase())
+  // );
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-slate-50 text-gray-900">
@@ -145,26 +149,27 @@ export default function Portfolio() {
           <nav className="hidden sm:flex items-center gap-6">
             <NavLink href="#about">About</NavLink>
             <NavLink href="#experience">Experience</NavLink>
-            <NavLink href="#projects">Projects</NavLink>
+            <NavLink href="#education">Education</NavLink>
+            {/* <NavLink href="#projects">Projects</NavLink> */}
             <NavLink href="#skills">Skills</NavLink>
             <NavLink href="#contact">Contact</NavLink>
             <Button asChild className="rounded-xl">
-                  <a
-                    href={PROFILE.resumeUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center gap-2"   // ← add this
-                  >
-                    <FileDown className="h-4 w-4 shrink-0 -translate-y-[1px]" />
-                    <span>Resume</span>
-                  </a>
+              <a
+                href={PROFILE.resumeUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2"
+              >
+                <FileDown className="h-4 w-4 shrink-0 -translate-y-[1px]" />
+                <span>Resume</span>
+              </a>
             </Button>
           </nav>
         </div>
       </div>
 
-      {/* Hero */}
-      <header id="home" className="max-w-6xl mx-auto px-4 pt-14 sm:pt-24">
+      {/* Hero (tightened) */}
+      <header id="home" className="max-w-6xl mx-auto px-4 pt-10 sm:pt-16">
         <div className="grid grid-cols-1 md:grid-cols-[auto,1fr] gap-8 items-center">
           <motion.img
             initial={{ opacity: 0, scale: 0.95 }}
@@ -175,7 +180,6 @@ export default function Portfolio() {
             className="w-100 h-100 sm:w-120 sm:h-120 md:w-96 md:h-96 rounded-2xl object-cover shadow-lg"
           />
           <div>
-      
             <motion.h1
               initial={{ y: 10, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
@@ -185,7 +189,7 @@ export default function Portfolio() {
               {PROFILE.tagline}
             </motion.h1>
             <p className="mt-4 text-gray-600 max-w-2xl">
-              I build reliable ML systems end‑to‑end, data, models, and product. I enjoy shipping polished experiences that make complex tech feel effortless.
+              I build reliable ML systems end-to-end, data, models, and product. I enjoy shipping polished experiences that make complex tech feel effortless.
             </p>
             <div className="flex flex-wrap items-center gap-3 mt-6">
               <Badge variant="secondary" className="px-3 py-1">
@@ -196,20 +200,14 @@ export default function Portfolio() {
               ))}
             </div>
             <div className="mt-6 flex items-center gap-3">
-              <Button asChild className="rounded-xl">
-                <a
-                  href="#projects"
-                  className="inline-flex items-center gap-2 whitespace-nowrap"
-                >
+              {/* <Button asChild className="rounded-xl">
+                <a href="#projects" className="inline-flex items-center gap-2 whitespace-nowrap">
                   <span>See Projects</span>
                   <ArrowRight className="h-4 w-4 shrink-0 -translate-y-[1px]" />
                 </a>
-              </Button>
+              </Button> */}
               <Button asChild variant="outline" className="rounded-xl">
-                <a
-                  href={`mailto:${PROFILE.email}`}
-                  className="inline-flex items-center gap-2 whitespace-nowrap"
-                >
+                <a href={`mailto:${PROFILE.email}`} className="inline-flex items-center gap-2 whitespace-nowrap">
                   <Mail className="h-4 w-4 shrink-0 -translate-y-[1px]" />
                   <span>Contact</span>
                 </a>
@@ -226,19 +224,18 @@ export default function Portfolio() {
         </div>
       </header>
 
-      {/* About */}
-      <Section id="about" title="About Me">
+      {/* About (tighter internal spacing) */}
+      <Section id="about" title="About Me" className="py-8 sm:py-10">
         <Card className="rounded-2xl">
-          <CardHeader className="pb-2">
-          </CardHeader>
-          <CardContent className="pt-0 text-gray-700 space-y-4">
+          <CardHeader className="pb-1"></CardHeader>
+          <CardContent className="pt-0 text-gray-700 space-y-3">
             <p>
               Hi, I’m Mahima Jagadeesh Patel, a graduate student at Carnegie Mellon University’s{" "}
               <a
                 href="https://lti.cs.cmu.edu"
                 target="_blank"
                 rel="noreferrer"
-                className="underline hover:no-underline"
+                className="underline hover:no-underline text-[#A6192E]"
               >
                 Language Technologies Institute
               </a>
@@ -248,18 +245,37 @@ export default function Portfolio() {
 
             <p>
               Technically, I’ve shipped production-ready ML models and built end-to-end pipelines that handle scale
-              and reliability. At <a
+              and reliability. At{" "}
+              <a
                 href="https://pixis.ai/"
                 target="_blank"
                 rel="noreferrer"
-                className="underline hover:no-underline"
+                className="underline hover:no-underline text-[#A6192E]"
               >
                 Pixis
               </a>, I deployed bandit-based optimization models and clustering algorithms that
               powered thousands of daily recommendations, improving CAC by 33% and CVR by 30%. At Seagate Research,
               I built hierarchical Transformer models for ferroelectric loop classification and re-architected data
               pipelines with ClickHouse, achieving a 100× speedup in analytics performance. I’ve also contributed to
-              academic projects like ORBIT (a NeurIPS submission) and led discussions as a Teaching Assistant at CMU.
+              academic projects like{" "}
+              <a
+                href="https://www.open-reco-bench.ai/"
+                target="_blank"
+                rel="noreferrer"
+                className="underline hover:no-underline text-[#A6192E]"
+              >
+                ORBIT
+              </a>{" "}
+              (a NeurIPS submission) and led discussions as a Graduate Teaching Assistant for the{" "}
+              <a
+                href="https://mcds-cmu.github.io/11637/f25/"
+                target="_blank"
+                rel="noreferrer"
+                className="underline hover:no-underline text-[#A6192E]"
+              >
+                Foundations of Computational Data Science
+              </a>{" "}
+              course at CMU.
             </p>
 
             <p>
@@ -275,24 +291,22 @@ export default function Portfolio() {
         </Card>
       </Section>
 
-
-
       {/* Experience */}
-      <Section id="experience" title="Experience">
-        <div className="grid gap-6">
+      <Section id="experience" title="Experience" className="py-8 sm:py-10">
+        <div className="grid gap-4">
           {EXPERIENCE.map((job) => (
             <Card key={job.role + job.company} className="rounded-2xl">
-              <CardHeader className="pb-2">
+              <CardHeader className="pb-1">
                 <CardTitle className="flex items-center justify-between">
                   <span className="text-lg sm:text-xl font-semibold">{job.role} · {job.company}</span>
                 </CardTitle>
               </CardHeader>
               <CardContent className="pt-0">
-                <div className="flex flex-wrap items-center gap-4 text-sm text-gray-600 mb-3">
+                <div className="flex flex-wrap items-center gap-3 text-sm text-gray-600 mb-2">
                   <div className="flex items-center gap-1"><Calendar className="w-4 h-4" /> {job.start} – {job.end}</div>
                   <div className="flex items-center gap-1"><MapPin className="w-4 h-4" /> {job.location}</div>
                 </div>
-                <ul className="list-disc ml-4 space-y-2 text-gray-700">
+                <ul className="list-disc ml-4 space-y-1.5 text-gray-700">
                   {job.points.map((p) => (
                     <li key={p}>{p}</li>
                   ))}
@@ -303,9 +317,10 @@ export default function Portfolio() {
         </div>
       </Section>
 
-      {/* Projects */}
-      <Section id="projects" title="Projects">
-        <div className="mb-6 max-w-md">
+      {/* Projects (kept commented, but with tighter defaults if used) */}
+      {/*
+      <Section id="projects" title="Projects" className="py-8 sm:py-10">
+        <div className="mb-4 max-w-md">
           <div className="flex items-center gap-2">
             <Input
               placeholder="Filter projects…"
@@ -315,13 +330,13 @@ export default function Portfolio() {
             />
           </div>
         </div>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {filteredProjects.map((p) => (
             <Card key={p.title} className="group rounded-2xl overflow-hidden">
-              <CardHeader>
+              <CardHeader className="pb-2">
                 <CardTitle className="text-lg">{p.title}</CardTitle>
               </CardHeader>
-              <CardContent className="space-y-4">
+              <CardContent className="space-y-3">
                 <p className="text-gray-700 leading-7">{p.desc}</p>
                 <div className="flex flex-wrap gap-2">
                   {p.tags?.map((t) => (
@@ -349,27 +364,14 @@ export default function Portfolio() {
           ))}
         </div>
       </Section>
-
-      {/* Skills */}
-      <Section id="skills" title="Skills">
-        <Card className="rounded-2xl">
-          <CardContent className="px-6 pt-4 pb-6">
-            <div className="flex flex-wrap gap-2">
-              {SKILLS.map((s) => (
-                <Badge key={s} className="px-3 py-1">{s}</Badge>
-              ))}
-            </div>
-          </CardContent>
-        </Card>
-      </Section>
-
+      */}
 
 
       {/* Education */}
-      <Section id="education" title="Education">
+      <Section id="education" title="Education" className="py-8 sm:py-10">
         {/* CMU */}
         <Card className="rounded-2xl">
-          <CardHeader className="pb-2">
+          <CardHeader className="pb-1">
             <CardTitle className="flex items-center gap-3 text-lg sm:text-xl font-semibold">
               <GraduationCap className="w-5 h-5" />
               Carnegie Mellon University
@@ -379,18 +381,16 @@ export default function Portfolio() {
             <div className="flex flex-wrap items-center gap-4 text-sm text-gray-600">
               <span>M.S. in Computational Data Science</span>
               <span>·</span>
-              <span>2024–2026</span>
+              <span>2024–2025</span>
               <span>·</span>
-              <span>GPA: {/* replace with your real value */}4.08/4.00</span>
-              {/* optional location to mirror experience */}
-              {/* <span className="flex items-center gap-1"><MapPin className="w-4 h-4" /> Pittsburgh, PA</span> */}
+              <span>GPA: 4.08/4.00</span>
             </div>
           </CardContent>
         </Card>
 
         {/* DSCE (UG) */}
-        <Card className="rounded-2xl">
-          <CardHeader className="pb-2">
+        <Card className="rounded-2xl mt-4">
+          <CardHeader className="pb-1">
             <CardTitle className="flex items-center gap-3 text-lg sm:text-xl font-semibold">
               <GraduationCap className="w-5 h-5" />
               Dayananda Sagar College of Engineering
@@ -402,7 +402,7 @@ export default function Portfolio() {
               <span>·</span>
               <span>2018–2022</span>
               <span>·</span>
-              <span>GPA: {/* replace with your real value */}9.76/10.00</span>
+              <span>GPA: 9.76/10.00</span>
             </div>
 
             {/* Award */}
@@ -411,7 +411,7 @@ export default function Portfolio() {
               <div className="text-gray-700">
                 <span className="font-medium">Dr. D Hemachandra Sagar Distinction Award</span>
                 <span className="block text-gray-600">
-                  Recipient for securing the third-highest GPA among graduating B.E. students (Jan 2023), 
+                  Recipient for securing the third-highest GPA among graduating B.E. students (Jan 2023),
                   associated with Dayananda Sagar College of Engineering, Bangalore.
                 </span>
               </div>
@@ -420,11 +420,23 @@ export default function Portfolio() {
         </Card>
       </Section>
 
-      {/* Contact */}
-      <Section id="contact" title="Contact">
+      {/* Skills */}
+      <Section id="skills" title="Skills" className="py-8 sm:py-10">
         <Card className="rounded-2xl">
-          {/* match About's internal rhythm */}
-          <CardHeader className="pb-2"></CardHeader>
+          <CardContent className="px-6 pt-3 pb-5">
+            <div className="flex flex-wrap gap-2">
+              {SKILLS.map((s) => (
+                <Badge key={s} className="px-3 py-1">{s}</Badge>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+      </Section>
+
+      {/* Contact */}
+      <Section id="contact" title="Contact" className="py-8 sm:py-10">
+        <Card className="rounded-2xl">
+          <CardHeader className="pb-1"></CardHeader>
           <CardContent className="pt-0">
             <div className="flex flex-col sm:flex-row sm:items-center gap-4">
               <div className="text-gray-700">
@@ -474,9 +486,8 @@ export default function Portfolio() {
         </Card>
       </Section>
 
-
       {/* Footer */}
-      <footer className="py-10 text-center text-sm text-gray-500">
+      <footer className="py-8 text-center text-sm text-gray-500">
         © {new Date().getFullYear()} {PROFILE.name}. Built with React + Tailwind.
       </footer>
     </div>
