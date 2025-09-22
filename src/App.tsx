@@ -239,13 +239,12 @@ export default function Portfolio() {
               >
                 Language Technologies Institute
               </a>
-              , specializing in multimodal machine learning, recommender systems, and large-scale data systems.
-              My passion lies in bridging the gap between cutting-edge research and real-world applications.
+              , specializing in Recommendation Systems, Large-Scale Data Systems and Multimodal Machine Learning, .
+              My passion lies in bridging cutting-edge research with real-world applications, building systems that are both impactful and scalable.
             </p>
 
             <p>
-              Technically, I’ve shipped production-ready ML models and built end-to-end pipelines that handle scale
-              and reliability. At{" "}
+              Technically, I’ve shipped production-ready ML models and engineered end-to-end pipelines designed for scale and reliability. At{" "}
               <a
                 href="https://pixis.ai/"
                 target="_blank"
@@ -256,8 +255,10 @@ export default function Portfolio() {
               </a>, I deployed bandit-based optimization models and clustering algorithms that
               powered thousands of daily recommendations, improving CAC by 33% and CVR by 30%. At Seagate Research,
               I built hierarchical Transformer models for ferroelectric loop classification and re-architected data
-              pipelines with ClickHouse, achieving a 100× speedup in analytics performance. I’ve also contributed to
-              academic projects like{" "}
+              pipelines with ClickHouse, achieving a 100× speedup in analytics performance. 
+            </p>
+            <p>
+              On the research side, I co-authored {" "}
               <a
                 href="https://www.open-reco-bench.ai/"
                 target="_blank"
@@ -266,7 +267,7 @@ export default function Portfolio() {
               >
                 ORBIT
               </a>{" "}
-              (a NeurIPS submission) and led discussions as a Graduate Teaching Assistant for the{" "}
+              a benchmark for integrative recommendation tasks, which was accepted at NeurIPS 2025. At CMU, I’ve also had the privilege of shaping discussions as a Graduate Teaching Assistant for the{" "}
               <a
                 href="https://mcds-cmu.github.io/11637/f25/"
                 target="_blank"
@@ -279,13 +280,10 @@ export default function Portfolio() {
             </p>
 
             <p>
-              Beyond work, I’ve grown by embracing challenges, from trekking the Himalayas to diving deep seas in Indonesia. I’m also a long-distance runner and Strava enthusiast,
-              always chasing new milestones on and off the track.
-            </p>
-
-            <p>
-              I’m excited about building systems that make AI transparent, impactful, and accessible through research,
-              engineering, and product development.
+              Beyond academics and work, I embrace challenges as a way of growing, whether trekking in the Himalayas, 
+              diving in the seas of Indonesia, or running marathons as a long-time Strava enthusiast. 
+              These experiences fuel the same curiosity and persistence I bring to building systems that make AI transparent, 
+              impactful, and accessible through research, engineering, and product development.
             </p>
           </CardContent>
         </Card>
