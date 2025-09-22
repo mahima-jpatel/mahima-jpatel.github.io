@@ -239,7 +239,7 @@ export default function Portfolio() {
               >
                 Language Technologies Institute
               </a>
-              , specializing in Recommendation Systems, Large-Scale Data Systems and Multimodal Machine Learning, .
+              , specializing in Recommendation Systems, Large-Scale Data Systems and Multimodal Machine Learning.
               My passion lies in bridging cutting-edge research with real-world applications, building systems that are both impactful and scalable.
             </p>
 
